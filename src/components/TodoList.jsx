@@ -1,6 +1,10 @@
 import Todoitem from "./Todoitem"
 
-const TodoList = () => {
+const TodoList = (props) => {
+    const {
+        tasks =[],
+    } = props
+
     const hasTasks = true
 
     if (!hasTasks) {
@@ -11,8 +15,13 @@ const TodoList = () => {
 
     return (
         <ul className="todo__list">
-            <Todoitem />
-            <Todoitem />
+            {tasks.map((task) => (
+                <Todoitem 
+                    className="todo__item"
+                    key={task.id}
+                    {...task}
+                />
+            ))}
         </ul>
     )
 }
